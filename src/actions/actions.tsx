@@ -4,7 +4,7 @@ export interface actionType {
     is_system: boolean;
 }
 
-export const ACTIONS: { [key: string]: actionType } = {
+export let ACTIONS: { [key: string]: actionType } = {
     "NOOP": {
         name: "No operation",
         action: () => console.debug("NOOP performed."),

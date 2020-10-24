@@ -12,10 +12,12 @@ const actionsStore = createStore({
             let currentListOfActions = getState().listOfActions;
             currentListOfActions[uuidv4()] = item;
             setState({
-                listOfActions: currentListOfActions
+                listOfActions: {
+                    ...currentListOfActions
+                }
             })
         },
-        deleteAction: (unique_id: string) => ({ setState, getState}) => {
+        deleteAction: (unique_id: string) => ({setState, getState}) => {
             console.debug(`actionsStore#deleteAction called with ${unique_id}`)
             let currentListOfActions = getState().listOfActions
             currentListOfActions[unique_id] ?
@@ -23,7 +25,9 @@ const actionsStore = createStore({
                 console.warn(`actionsStore#deleteAction: No item found with id: ${unique_id}`);
             console.debug("After deleting", currentListOfActions)
             setState({
-                listOfActions: currentListOfActions
+                listOfActions: {
+                    ...currentListOfActions
+                }
             })
         }
     },
