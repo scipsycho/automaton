@@ -1,6 +1,6 @@
 export interface actionType {
     name: string;
-    action: (...args: any) => void;
+    action: Function
     is_system: boolean;
 }
 

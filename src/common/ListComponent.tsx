@@ -1,33 +1,19 @@
 import React, {Component} from "react";
-import {AccordionSummary} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import TextField from "@material-ui/core/TextField";
-import Accordion from "@material-ui/core/Accordion";
-import {Delete} from "@material-ui/icons";
+import {AccordionComponent} from "./AccordionComponent";
 
 export class ListComponent extends Component<any, any> {
     render() {
-        const {items, headingField, disabledField, detailsField, deleteHandler} = this.props
+        const {items, headingField, disabledField, detailsField, deleteHandler, modifyHandler, validateDetails} = this.props;
         let renderElement: any[] = [];
         for (let id in items) {
             renderElement.push(
-                <Accordion id={id}>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                        {items[id][headingField]}
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <TextField
-                            label={"javascript"}
-                            variant={"outlined"}
-                            defaultValue={items[id][detailsField].toString()}
-                            disabled={items[id][disabledField]}
-                            multiline={true}
-                            fullWidth={true}
-                        />
-                        <Delete onClick={() => deleteHandler(id)}/>
-                    </AccordionDetails>
-                </Accordion>
+                <AccordionComponent
+                    item={items[id]}
+                    id={id}
+                    headingField={headingField} disabledField={disabledField} detailsField={detailsField}
+                    deleteHandler={deleteHandler} modifyHandler={modifyHandler}
+                    validateDetails={validateDetails}
+                />
             )
         }
         return renderElement

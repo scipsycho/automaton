@@ -13,6 +13,8 @@ export class ActionsComponent extends Component<any, any> {
                         disabledField={"is_system"}
                         detailsField={"action"}
                         deleteHandler={actions.deleteAction}
+                        modifyHandler={actions.modifyAction}
+                        validateDetails={actions.validateAction}
                     />
                 )}
             </ActionsStoreSubscriber>
