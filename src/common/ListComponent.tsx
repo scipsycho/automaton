@@ -25,7 +25,7 @@ export class ListComponent extends Component<any, any> {
         for (let id in items) {
             renderElement.push(
                 <AccordionComponent
-                    item={items[id]}
+                    key={id}
                     id={id}
                     heading={items[id][headingField]}
                     isDisabled={items[id][disabledField]}

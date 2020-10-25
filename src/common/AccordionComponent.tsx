@@ -52,6 +52,7 @@ export class AccordionComponent extends Component<any, any> {
                     </AccordionSummary>
                     {isDisabled || (<AccordionDetails>
                         <TextField
+                            id={`${id}_summary`}
                             variant={"standard"}
                             defaultValue={heading.toString()}
                             disabled={isDisabled}
@@ -61,6 +62,7 @@ export class AccordionComponent extends Component<any, any> {
                     </AccordionDetails>)}
                     <AccordionDetails>
                         <TextField
+                            id={`${id}_details`}
                             label={"javascript"}
                             variant={"outlined"}
                             defaultValue={details.toString()}
@@ -74,12 +76,12 @@ export class AccordionComponent extends Component<any, any> {
                     <Divider/>
                     {isDisabled || (<AccordionActions>
                         <Tooltip title={"Delete"}>
-                            <IconButton onClick={() => deleteHandler(id)} size={"small"}>
+                            <IconButton onClick={() => deleteHandler(id)} size={"small"} id={`${id}_delete`}>
                                 <DeleteIcon/>
                             </IconButton>
                         </Tooltip>
                         <Tooltip title={"Save"}>
-                            <IconButton size={"small"} type={"submit"}>
+                            <IconButton size={"small"} type={"submit"} id={`${id}_submit`}>
                                 <SaveIcon/>
                             </IconButton>
                         </Tooltip>
