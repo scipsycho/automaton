@@ -10,10 +10,9 @@ export let ACTIONS: { [key: string]: actionType } = {
         action: () => console.debug("NOOP performed."),
         is_system: true
     },
-    "asdlkfjaslkdjf":
-        {
-            name: "Log operation",
-            action: () => console.log("Testing the operation."),
-            is_system: false
-        }
+    "asdlkfjaslkdjf": {
+        name: "Log operation",
+        action: () => console.log("Testing the operation."),
+        is_system: false
+    }
 }

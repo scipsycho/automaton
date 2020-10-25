@@ -2,13 +2,15 @@ import {createStore, createSubscriber} from 'react-sweet-state';
 import {ACTIONS, actionType} from "./actions";
 import {v4 as uuidv4} from 'uuid'
 
+const fetchFromStore= () => console.log("fetching from store... or am I?");
+const savingInStore= () => console.log("Saving to store... or am I?");
+
 const actionsStore = createStore({
     initialState: {
         listOfActions: ACTIONS
     },
     actions: {
-        fetchFromStore: () => () => console.log("fetching from store... or am I?"),
-        addAction: (item: actionType) => ({setState, getState}) => {
+        addAction: (item: actionType, shouldSaveToStore: boolean = true) => ({setState, getState}) => {
             let currentListOfActions = getState().listOfActions;
             currentListOfActions[uuidv4()] = item;
             setState({
@@ -16,6 +18,9 @@ const actionsStore = createStore({
                     ...currentListOfActions
                 }
             })
+            if(shouldSaveToStore) {
+                savingInStore()
+            }
         },
         deleteAction: (unique_id: string) => ({setState, getState}) => {
             console.debug(`actionsStore#deleteAction called with ${unique_id}`)

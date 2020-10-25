@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, {Component, FormEvent} from "react";
 import Accordion from "@material-ui/core/Accordion";
-import {AccordionActions, AccordionSummary, Divider} from "@material-ui/core";
+import {AccordionActions, AccordionSummary, Divider, IconButton, Tooltip} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import TextField from "@material-ui/core/TextField";
@@ -12,39 +12,41 @@ export class AccordionComponent extends Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            heading: this.props.item[this.props.headingField],
-            details: this.props.item[this.props.detailsField],
+            heading: this.props.heading,
+            details: this.props.details,
+            saveButtonVisible: false,
             errorDetails: false
         }
     }
 
+    onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (this.props.validateDetails(this.state.details)) {
+            this.setState({
+                errorDetails: false
+            })
+        } else {
+            this.setState({
+                errorDetails: true
+            })
+            return;
+        }
+        this.props.modifyHandler(this.props.id, this.state);
+    }
+
     render() {
-        const {item, headingField, disabledField, detailsField, deleteHandler, modifyHandler, id, validateDetails} = this.props;
-        console.log(`${item[headingField]}: ${detailsField}`)
+        const {item, heading, isDisabled, details, deleteHandler, modifyHandler, id, validateDetails, isExpanded, expandHandler} = this.props;
         return (
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                if(validateDetails(this.state.details)) {
-                    this.setState({
-                        errorDetails: false
-                    })
-                } else {
-                    this.setState({
-                        errorDetails: true
-                    })
-                    return;
-                }
-                modifyHandler(id, this.state);
-            }}>
-                <Accordion id={id}>
+            <form onSubmit={e => this.onSubmitHandler(e)}>
+                <Accordion id={id} defaultExpanded={false} square={true} style={{padding: '1px'}} expanded={isExpanded} onChange={(_, expanded) => expandHandler(id, expanded)}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                        {item[headingField]}
+                        {heading}
                     </AccordionSummary>
-                    {item[disabledField] || (<AccordionDetails>
+                    {isDisabled || (<AccordionDetails>
                         <TextField
                             variant={"standard"}
-                            defaultValue={item[headingField].toString()}
-                            disabled={item[disabledField]}
+                            defaultValue={heading.toString()}
+                            disabled={isDisabled}
                             multiline={false}
                             onInput={e => this.setState({heading: (e.target as HTMLInputElement).value})}
                         />
@@ -53,8 +55,8 @@ export class AccordionComponent extends Component<any, any> {
                         <TextField
                             label={"javascript"}
                             variant={"outlined"}
-                            defaultValue={item[detailsField].toString()}
-                            disabled={item[disabledField]}
+                            defaultValue={details.toString()}
+                            disabled={isDisabled}
                             multiline={true}
                             fullWidth={true}
                             error={this.state.errorDetails}
@@ -70,23 +72,17 @@ export class AccordionComponent extends Component<any, any> {
                         />
                     </AccordionDetails>
                     <Divider/>
-                    {item[disabledField] || (<AccordionActions>
-                        <Button
-                            color={"default"}
-                            variant={"contained"}
-                            startIcon={<DeleteIcon/>}
-                            onClick={() => deleteHandler(id)}
-                            size={"small"}>
-                            Delete
-                        </Button>
-                        <Button
-                            type={"submit"}
-                            color={"primary"}
-                            variant={"contained"}
-                            startIcon={<SaveIcon/>}
-                            size={"small"}>
-                            Save
-                        </Button>
+                    {isDisabled || (<AccordionActions>
+                        <Tooltip title={"Delete"}>
+                            <IconButton onClick={() => deleteHandler(id)} size={"small"}>
+                                <DeleteIcon/>
+                            </IconButton>
+                        </Tooltip>
+                        <Tooltip title={"Save"}>
+                            <IconButton size={"small"} type={"submit"}>
+                                <SaveIcon/>
+                            </IconButton>
+                        </Tooltip>
                     </AccordionActions>)}
                 </Accordion>
             </form>
