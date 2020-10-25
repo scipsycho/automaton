@@ -3,7 +3,11 @@ import './App.css';
 import {NavigationComponent} from "./common/NavigationComponent";
 import {ActionsComponent} from "./actions/ActionsComponent";
 
-export const drawerWidth = "240";
+export const drawerWidth = "17%";
+export const mainPageWidth = '50%';
+export const mainPageTopPos = '10%';
+export const widthBetweenDrawerAndMainPage = '15%';
+export const heightBetweenHeadingAndList = '10%';
 
 function App() {
     let [navOption, setNavOption] = useState('Actions')
@@ -21,11 +25,11 @@ function App() {
             />
             <div id={"navopt-mid-box"} style={{
                 backgroundColor: '#212121',
-                width: '50%',
+                width: mainPageWidth,
                 maxHeight: '100%',
-                position: 'absolute',
-                left: '30%',
-                top: '10%'
+                position: 'fixed',
+                left:  `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
+                top: mainPageTopPos
             }}>
                 {navOption === "Actions" && (<ActionsComponent/>)}
             </div>

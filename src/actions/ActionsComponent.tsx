@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import {ListComponent} from "../common/ListComponent";
 import {ActionsStoreSubscriber} from "./store";
-import {Typography} from "@material-ui/core";
+import {IconButton, Typography} from "@material-ui/core";
+import {heightBetweenHeadingAndList, mainPageTopPos, mainPageWidth} from "../App";
+import AddIcon from '@material-ui/icons/Add';
+import {CssCreateButton} from "../common/style";
+import {SAMPLE_ACTION} from "./actions";
 
 export class ActionsComponent extends Component<any, any> {
     render() {
@@ -12,7 +16,16 @@ export class ActionsComponent extends Component<any, any> {
                         <Typography variant={'h4'} style={{color: 'white'}}>
                             Actions
                         </Typography>
-                        <div id={"actions-list"} style={{position: 'absolute', width: '100%'}}>
+                        <CssCreateButton size={"small"} type={"submit"} onClick={() => actions.addAction(SAMPLE_ACTION, false)}>
+                            <AddIcon/>
+                        </CssCreateButton>
+                        <div id={"actions-list"} style={{
+                            position: 'fixed',
+                            overflowY: 'scroll',
+                            width: mainPageWidth,
+                            maxHeight: '70%',
+                            top: `calc(${heightBetweenHeadingAndList} + ${mainPageTopPos})`
+                        }}>
                             <ListComponent
                                 items={state.listOfActions}
                                 headingField={"name"}

@@ -10,7 +10,7 @@ export class NavigationComponent extends Component<any, any> {
             <AppBar position={"fixed"}
                 style={{
                     left: 0,
-                    width: '17%',
+                    width: drawerWidth,
                     height: '100%',
                     backgroundColor: '#3c3c3c'
                 }}

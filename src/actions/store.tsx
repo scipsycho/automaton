@@ -4,7 +4,6 @@ import {v4 as uuidv4} from 'uuid'
 
 const fetchFromStore = () => console.log("fetching from store... or am I?");
 const savingInStore = () => console.log("Saving to store... or am I?");
-
 const actionsStore = createStore({
     initialState: {
         listOfActions: ACTIONS

@@ -17,3 +17,8 @@ export let ACTIONS: { [key: string]: actionType } = {
     }
 }
 
+export const SAMPLE_ACTION: actionType = {
+    name: "Sample action",
+    action: () => console.log("Sample action executed"),
+    is_system: false
+}
