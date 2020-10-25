@@ -20,7 +20,7 @@ export class ListComponent extends Component<any, any> {
     }
 
     render() {
-        const {items, headingField, disabledField, detailsField, deleteHandler, modifyHandler, validateDetails, detailsLabel, detailsLabelValidationError} = this.props;
+        const {items, headingField, disabledField, detailsField, deleteHandler, modifyHandler, validateDetails} = this.props;
         let renderElement: any[] = [];
         for (let id in items) {
             renderElement.push(

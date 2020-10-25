@@ -30,12 +30,12 @@ describe('AccordianComponent', () => {
 
     it('delete handler is called when the delete button is clicked', () => {
         screen.getAllByTitle('Delete')[0].click()
-        expect(deleteFunc).toBeCalled
+        expect(deleteFunc).toBeCalled()
     })
 
     it('submit button handler is called when the delete button is clicked', () => {
         screen.getAllByTitle('Save')[0].click()
-        expect(submitFunc).toBeCalled
+        expect(submitFunc).toBeCalled()
     })
 
 })

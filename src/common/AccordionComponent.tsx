@@ -1,11 +1,19 @@
 import React, {Component, FormEvent} from "react";
 import Accordion from "@material-ui/core/Accordion";
-import {AccordionActions, AccordionSummary, Divider, IconButton, Tooltip} from "@material-ui/core";
+import {AccordionActions, AccordionSummary, Button, Divider, IconButton, Tooltip, Typography} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import TextField from "@material-ui/core/TextField";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
+import {
+    accordionHeadingStyle,
+    accordionStyle,
+    CssSaveButton,
+    CssDetailsTextField,
+    CssSummaryTextField,
+    CssDeleteButton
+} from "./style";
+
 
 export class AccordionComponent extends Component<any, any> {
     constructor(props: any) {
@@ -29,7 +37,6 @@ export class AccordionComponent extends Component<any, any> {
             this.setState({
                 errorDetails: true
             })
-            return;
         }
     }
 
@@ -45,23 +52,24 @@ export class AccordionComponent extends Component<any, any> {
         const {heading, isDisabled, details, deleteHandler, id, isExpanded, expandHandler} = this.props;
         return (
             <form onSubmit={e => this.onSubmitHandler(e)}>
-                <Accordion id={id} defaultExpanded={false} square={true} style={{padding: '1px'}} expanded={isExpanded}
+                <Accordion id={id} defaultExpanded={false} square={true} style={accordionStyle} expanded={isExpanded}
                            onChange={(_, expanded) => expandHandler(id, expanded)}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                        {heading}
+                        <Typography style={accordionHeadingStyle}>{heading}</Typography>
                     </AccordionSummary>
                     {isDisabled || (<AccordionDetails>
-                        <TextField
+                        <CssSummaryTextField
                             id={`${id}_summary`}
                             variant={"standard"}
                             defaultValue={heading.toString()}
                             disabled={isDisabled}
                             multiline={false}
                             onInput={e => this.setState({heading: (e.target as HTMLInputElement).value})}
+                            className={"hello"}
                         />
                     </AccordionDetails>)}
                     <AccordionDetails>
-                        <TextField
+                        <CssDetailsTextField
                             id={`${id}_details`}
                             label={"javascript"}
                             variant={"outlined"}
@@ -76,14 +84,16 @@ export class AccordionComponent extends Component<any, any> {
                     <Divider/>
                     {isDisabled || (<AccordionActions>
                         <Tooltip title={"Delete"}>
-                            <IconButton onClick={() => deleteHandler(id)} size={"small"} id={`${id}_delete`}>
+                            <CssDeleteButton onClick={() => deleteHandler(id)} size={"small"} id={`${id}_delete`}>
                                 <DeleteIcon/>
-                            </IconButton>
+                                Delete
+                            </CssDeleteButton>
                         </Tooltip>
                         <Tooltip title={"Save"}>
-                            <IconButton size={"small"} type={"submit"} id={`${id}_submit`}>
+                            <CssSaveButton size={"small"} type={"submit"} id={`${id}_submit`}>
                                 <SaveIcon/>
-                            </IconButton>
+                                Save
+                            </CssSaveButton>
                         </Tooltip>
                     </AccordionActions>)}
                 </Accordion>
