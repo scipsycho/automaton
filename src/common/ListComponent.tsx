@@ -20,17 +20,20 @@ export class ListComponent extends Component<any, any> {
     }
 
     render() {
-        const {items, headingField, disabledField, detailsField, deleteHandler, modifyHandler, validateDetails} = this.props;
+        const {items, headingField, disabledField, detailsField, deleteHandler, modifyHandler, validateDetails, detailsLabel, detailsLabelValidationError} = this.props;
         let renderElement: any[] = [];
         for (let id in items) {
             renderElement.push(
                 <AccordionComponent
                     item={items[id]}
                     id={id}
-                    heading={items[id][headingField]} isDisabled={items[id][disabledField]} details={items[id][detailsField]}
-                    deleteHandler={deleteHandler} modifyHandler={modifyHandler}
-                    validateDetails={validateDetails}
+                    heading={items[id][headingField]}
+                    isDisabled={items[id][disabledField]}
+                    details={items[id][detailsField]}
                     isExpanded={this.state.isExpanded === id}
+                    deleteHandler={deleteHandler}
+                    modifyHandler={modifyHandler}
+                    validateDetails={validateDetails}
                     expandHandler={this.expand}
                 />
             )

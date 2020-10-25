@@ -4,7 +4,6 @@ import {AccordionActions, AccordionSummary, Divider, IconButton, Tooltip} from "
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -25,20 +24,29 @@ export class AccordionComponent extends Component<any, any> {
             this.setState({
                 errorDetails: false
             })
+            this.props.modifyHandler(this.props.id, this.state);
         } else {
             this.setState({
                 errorDetails: true
             })
             return;
         }
-        this.props.modifyHandler(this.props.id, this.state);
+    }
+
+    onInputDetailsHandler = (e: FormEvent<HTMLDivElement>) => {
+        let val = (e.target as HTMLInputElement).value
+        this.setState({
+            details: val,
+            errorDetails: false,
+        })
     }
 
     render() {
-        const {item, heading, isDisabled, details, deleteHandler, modifyHandler, id, validateDetails, isExpanded, expandHandler} = this.props;
+        const {heading, isDisabled, details, deleteHandler, id, isExpanded, expandHandler} = this.props;
         return (
             <form onSubmit={e => this.onSubmitHandler(e)}>
-                <Accordion id={id} defaultExpanded={false} square={true} style={{padding: '1px'}} expanded={isExpanded} onChange={(_, expanded) => expandHandler(id, expanded)}>
+                <Accordion id={id} defaultExpanded={false} square={true} style={{padding: '1px'}} expanded={isExpanded}
+                           onChange={(_, expanded) => expandHandler(id, expanded)}>
                     <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                         {heading}
                     </AccordionSummary>
@@ -60,15 +68,7 @@ export class AccordionComponent extends Component<any, any> {
                             multiline={true}
                             fullWidth={true}
                             error={this.state.errorDetails}
-                            onInput={
-                                (e) => {
-                                    let val = (e.target as HTMLInputElement).value
-                                    this.setState({
-                                        details: val,
-                                        errorDetails: false
-                                    })
-                                }
-                            }
+                            onInput={e => this.onInputDetailsHandler(e)}
                         />
                     </AccordionDetails>
                     <Divider/>

@@ -2,8 +2,8 @@ import {createStore, createSubscriber} from 'react-sweet-state';
 import {ACTIONS, actionType} from "./actions";
 import {v4 as uuidv4} from 'uuid'
 
-const fetchFromStore= () => console.log("fetching from store... or am I?");
-const savingInStore= () => console.log("Saving to store... or am I?");
+const fetchFromStore = () => console.log("fetching from store... or am I?");
+const savingInStore = () => console.log("Saving to store... or am I?");
 
 const actionsStore = createStore({
     initialState: {
@@ -18,7 +18,7 @@ const actionsStore = createStore({
                     ...currentListOfActions
                 }
             })
-            if(shouldSaveToStore) {
+            if (shouldSaveToStore) {
                 savingInStore()
             }
         },
@@ -61,7 +61,7 @@ const actionsStore = createStore({
             try {
                 eval(actionString)
             } catch (e) {
-               return false;
+                return false;
             }
             return true;
         }
