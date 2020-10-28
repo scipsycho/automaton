@@ -9,7 +9,8 @@
     "<all_urls>"
   ],
   "browser_action": {
-    "default_icon": "logo69x69.jpg"
+    "default_icon": "logo69x69.jpg",
+    "default_popup": "./temp.html"
   },
   "background": {
     "scripts": ["./scripts/background/main.js"]
@@ -19,5 +20,12 @@
       "matches": ["<all_urls>"],
       "js": ["./scripts/content/main.js"]
     }
-  ]
+  ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Alt+Space"
+      }
+    }
+  }
 }

@@ -3,3 +3,4 @@ chrome.browserAction.onClicked.addListener(tab => {
             alert(response.url)
         })
 })
+
