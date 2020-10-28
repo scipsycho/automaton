@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {AppBar, Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
-import {drawerWidth} from "../App";
+import {drawerWidth} from "../SettingsPage";
 
 export class NavigationComponent extends Component<any, any> {
     render() {
