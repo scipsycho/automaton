@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import './SettingsPage.css';
 import {NavigationComponent} from "./common/NavigationComponent";
 import {ActionsComponent} from "./actions/ActionsComponent";
 
@@ -9,7 +9,7 @@ export const mainPageTopPos = '10%';
 export const widthBetweenDrawerAndMainPage = '15%';
 export const heightBetweenHeadingAndList = '10%';
 
-function App() {
+function SettingsPage() {
     let [navOption, setNavOption] = useState('Actions')
 
     return (
@@ -37,4 +37,4 @@ function App() {
     )
 }
 
-export default App;
+export default SettingsPage;
