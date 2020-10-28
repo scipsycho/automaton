@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "test",
+  "version": "0.0.2",
+  "description": "Map domain-names using regex",
+  "background": {
+    "scripts": [
+      "./background/requestHandler.js"
+    ]
+  },
+  "options_ui": {
+    "page": "./index.html",
+    "browser_style": true
+  },
+  "permissions": [
+    "proxy",
+    "storage",
+    "<all_urls>"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "test@example.org",
+      "strict_min_version": "52.0a1"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./background/contentScripts/main.js"],
+      "all_frames": true
+    }
+  ]
+}
