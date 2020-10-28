@@ -4,12 +4,20 @@
   "description": "Automate everything!",
   "version": "0.0.1",
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "tabs",
+    "<all_urls>"
   ],
   "browser_action": {
     "default_icon": "logo69x69.jpg"
   },
   "background": {
-    "scripts": ["./background/main.js"]
-  }
+    "scripts": ["./scripts/background/main.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./scripts/content/main.js"]
+    }
+  ]
 }
