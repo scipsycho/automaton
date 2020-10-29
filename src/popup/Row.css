@@ -1,0 +1,8 @@
+.list-item-div {
+    background-color: pink;
+    color: blue;
+}
+
+.list-item-div.selected {
+    background-color: yellow;
+}

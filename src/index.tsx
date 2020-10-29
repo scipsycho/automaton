@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './index.css';
-import SettingsPage from './SettingsPage';
+import SettingsPage from './settings-page/SettingsPage';
 import reportWebVitals from './reportWebVitals';
-import {Popup} from "./Popup";
+import {Popup} from "./popup/Popup";
 
 ReactDOM.render(
     <BrowserRouter>

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {ListComponent} from "../common/ListComponent";
 import {ActionsStoreSubscriber} from "./store";
 import {IconButton, Typography} from "@material-ui/core";
-import {heightBetweenHeadingAndList, mainPageTopPos, mainPageWidth} from "../SettingsPage";
+import {heightBetweenHeadingAndList, mainPageTopPos, mainPageWidth} from "../settings-page/SettingsPage";
 import AddIcon from '@material-ui/icons/Add';
 import {CssCreateButton} from "../common/style";
 import {SAMPLE_ACTION} from "./actions";

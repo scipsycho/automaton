@@ -1,0 +1,36 @@
+.search-bar-div {
+    display: flex;
+    height: 34px;
+    width: 100%;
+    pointer-events: none;
+    background-color: var(--light-color);
+    border-radius: var(--border-raidus-small-fields);
+    border-style: solid;
+    border-color: var(--darkest-color);
+    margin: 2px 2px 2px 2px;
+}
+
+.search-icon-div {
+    display: flex;
+    position: relative;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    padding: 2px 2px 2px 2px;
+}
+
+.search-input-input, .MuiInputBase-root {
+    margin-left: 4px;
+    padding: 2px 2px 2px 2px;
+    width: calc(100% - 40px);
+    transition-duration: 1s;
+    height: 100%;
+    pointer-events: auto;
+    background-color: inherit;
+}
+
+
+.search-bar-div:focus {
+    width: 100%
+}

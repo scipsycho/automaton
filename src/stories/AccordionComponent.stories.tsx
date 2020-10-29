@@ -3,7 +3,7 @@ import React from "react";
 
 export default {
    title: 'AccordionComponent',
-   component: 'AccordionComponent'
+   component: AccordionComponent
 }
 
 const Template = (args: any) => <AccordionComponent {...args}/>;

@@ -2,7 +2,11 @@ import {createStore, createSubscriber} from 'react-sweet-state';
 import {ACTIONS, actionType} from "./actions";
 import {v4 as uuidv4} from 'uuid'
 
-const fetchFromStore = () => console.log("fetching from store... or am I?");
+export const fetchFromStore = () => {
+    console.log("Not fetching data from store right now. Just returning default values.")
+    return ACTIONS;
+};
+
 const savingInStore = () => console.log("Saving to store... or am I?");
 const actionsStore = createStore({
     initialState: {
@@ -46,6 +50,7 @@ const actionsStore = createStore({
             currentListOfActions[unique_id] ?
                 currentListOfActions[unique_id] = {
                     name: props.heading,
+                    description: "not yet filled TODO",
                     action: actionFunc,
                     is_system: false
                 } :

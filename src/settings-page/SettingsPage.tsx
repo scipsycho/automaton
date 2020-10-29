@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './SettingsPage.css';
-import {NavigationComponent} from "./common/NavigationComponent";
-import {ActionsComponent} from "./actions/ActionsComponent";
+import {NavigationComponent} from "../common/NavigationComponent";
+import {ActionsComponent} from "../actions/ActionsComponent";
 
 export const drawerWidth = "17%";
 export const mainPageWidth = '50%';
@@ -28,7 +28,7 @@ function SettingsPage() {
                 width: mainPageWidth,
                 maxHeight: '100%',
                 position: 'fixed',
-                left:  `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
+                left: `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
                 top: mainPageTopPos
             }}>
                 {navOption === "Actions" && (<ActionsComponent/>)}
