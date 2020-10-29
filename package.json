@@ -2,6 +2,7 @@
   "name": "automaton",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@atlaskit/atlassian-navigation": "^0.12.2",
     "@atlaskit/icon": "^21.1.4",
@@ -31,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public --no-dll",

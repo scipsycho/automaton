@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, HashRouter} from 'react-router-dom';
 import './index.css';
 import SettingsPage from './settings-page/SettingsPage';
 import reportWebVitals from './reportWebVitals';
 import {Popup} from "./popup/Popup";
 
 ReactDOM.render(
-    <BrowserRouter>
+    <HashRouter>
         <Switch>
-            <Route exact path={"/"} component={SettingsPage}></Route>
-            <Route exact path={"/popup"} component={Popup}></Route>
+            <Route exact path={"/settings-page"} component={SettingsPage}></Route>
+            <Route exact path={"/"} component={Popup}></Route>
         </Switch>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('root')
 );
 
