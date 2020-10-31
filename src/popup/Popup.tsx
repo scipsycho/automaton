@@ -10,6 +10,7 @@ const actionFunction = () => console.log("action");
 const createItem = (title: string, desc: string, isFocused = false, onAction = actionFunction) => {
     return {id: v4(), title: title, description: desc, isFocused: isFocused, onAction: onAction};
 }
+const LOG_KEY = "Popup";
 
 export class Popup extends Component<any, any> {
     private popupElem: HTMLDivElement | null | undefined;
@@ -24,7 +25,6 @@ export class Popup extends Component<any, any> {
             numOfItems: itemsList.length,
             initialItemsList: itemsList,
             initialNumOfItems: itemsList.length,
-            isSearchInFocus: true
         }
     }
 
@@ -47,19 +47,20 @@ export class Popup extends Component<any, any> {
 
     handleKeyboardPresses = (arg: KeyboardEvent) => {
         console.debug(`Popup#handleKeyboardPresses: ${arg.key} was pressed.`)
-        if(!this.moveFocus_keyboard(arg.key) && !this.executeActionForEnterKey(arg.key)) {
+        if (!this.moveFocus_keyboard(arg.key) && !this.executeActionForEnterKey(arg.key)) {
             console.debug("Popup#handleKeyboardPresses: moving focus back to searchbar")
             //refocusing to search bar
             this.setState({
-                isSearchInFocus: true
+                focusedIndex: -1
             })
         }
     }
 
     executeActionForEnterKey = (key: string) => {
-        if(key === "Enter") {
-            this.state.itemsList[this.state.focusedIndex]
-                ? this.state.itemsList[this.state.focusedIndex].onAction()
+        if (key === "Enter") {
+            let indexToExecute = this.state.focusedIndex === -1 ? 0 : this.state.focusedIndex;
+            this.state.itemsList[indexToExecute]
+                ? this.state.itemsList[indexToExecute].onAction()
                 : console.warn(`Popup#executeActionForEnterKey: cannot find ${this.state.focusedIndex} in items list.`)
             return true;
         }
@@ -67,15 +68,20 @@ export class Popup extends Component<any, any> {
     }
 
     moveFocus_keyboard = (key: string) => {
+        console.debug(`Popip#moveFocusKeyboard: Got ${key} when focus is ${this.state.focusedIndex}`)
         if (key === "ArrowDown") {
-            this.setState((prevState: any) => {
-                return {focusedIndex: prevState.focusedIndex === prevState.numOfItems - 1 ? 0 : prevState.focusedIndex + 1};
-            })
+            if (this.state.focusedIndex < this.state.numOfItems - 1) {
+                this.setState((prevState: any) => {
+                    return {focusedIndex: prevState.focusedIndex + 1};
+                })
+            }
             return true;
         } else if (key === "ArrowUp") {
-            this.setState((prevState: any) => {
-                return {focusedIndex: prevState.focusedIndex === 0 ? prevState.numOfItems - 1 : prevState.focusedIndex - 1}
-            })
+            if (this.state.focusedIndex >= 0) {
+                this.setState((prevState: any) => {
+                    return {focusedIndex: prevState.focusedIndex - 1}
+                })
+            }
             return true;
         }
         return false;
@@ -83,11 +89,9 @@ export class Popup extends Component<any, any> {
 
     moveFocus_mouse = (index: number) => {
         console.debug(`mouse was moved over ${index}th row`)
-        if (index >= 0 && index < this.state.numOfItems) {
-            this.setState({
-                focusedIndex: index
-            })
-        }
+        this.setState({
+            focusedIndex: index
+        })
     }
 
     doesItemMatchSearch = (item: itemType, searchRegex: RegExp) => {
@@ -105,7 +109,7 @@ export class Popup extends Component<any, any> {
             this.setState({
                 itemsList: newItemsList,
                 numOfItems: newItemsList.length,
-                focusedIndex: 0
+                focusedIndex: -1
             }, () => {
                 optionalCallback();
                 // event.target ? event.target.focus() : console.warn(`Cannot refocus to search for event=${event.toString()}`)
@@ -116,7 +120,7 @@ export class Popup extends Component<any, any> {
     render() {
         return (
             <div id={"popup-div"} ref={elem => this.popupElem = elem} style={{height: "200px"}}>
-                <SearchBar onSearch={this.filterRows} isFocused={this.state.isSearchInFocus}/>
+                <SearchBar onSearch={this.filterRows} isFocused={this.state.focusedIndex === -1}/>
                 <Table itemsList={this.state.itemsList} focusedIndex={this.state.focusedIndex}
                        onHover={this.moveFocus_mouse}/>
             </div>

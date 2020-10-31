@@ -1,8 +1,9 @@
-.list-item-div {
-    background-color: pink;
-    color: blue;
+.list-item-li {
+    background-color: var(--light-color);
+    border-color: var(--darkest-color);
 }
 
-.list-item-div.selected {
-    background-color: yellow;
+.list-item-li .Mui-focusVisible {
+    background-color: blue;
 }
+

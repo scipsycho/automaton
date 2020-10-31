@@ -6,6 +6,16 @@ import './SearchBar.css';
 
 export class SearchBar extends Component<any, any> {
 
+    reFocus = (elem: any) => {
+        const isFocused: boolean = this.props.isFocused;
+        if(isFocused && elem) {
+            elem.focus()
+            elem.setSelectionRange(-1, -1)
+            elem.selectionStart = elem.selectionEnd = -1;
+        } else {
+            console.warn("SearchBar#inputRef: cannot focus to searchbar")
+        }
+    }
     render() {
         const {onSearch, isFocused} = this.props;
         return (<div className={"search-bar-div"}>
@@ -17,8 +27,7 @@ export class SearchBar extends Component<any, any> {
                 className={"search-input-input"}
                 inputProps={{'aria-label': 'search'}}
                 onChange={(event) => onSearch(event)}
-                autoFocus={true}
-                inputRef={elem => isFocused && elem ? elem.focus() : true}
+                inputRef={elem => this.reFocus(elem)}
             />
         </div>)
     }

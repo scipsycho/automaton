@@ -7,9 +7,11 @@ export default {
 }
 
 const Template = (args: any) => <SearchBar {...args}/>
+const mockOnSearch = () => console.log("Searching...")
 
 export const Default = Template.bind({})
 // @ts-ignore
 Default.args = {
-
+    onSearch: mockOnSearch,
+    isFocused: true
 }

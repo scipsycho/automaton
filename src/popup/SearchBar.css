@@ -1,36 +1,42 @@
 .search-bar-div {
     display: flex;
-    height: 34px;
-    width: 100%;
+    width: 50%;
     pointer-events: none;
     background-color: var(--light-color);
     border-radius: var(--border-raidus-small-fields);
     border-style: solid;
     border-color: var(--darkest-color);
-    margin: 2px 2px 2px 2px;
+    border-width: 1px;
+    position: relative;
+    justify-content: left;
+    align-items: center;
+    transition-duration: 0.2s;
+    float: top;
+    height: 40px;
 }
 
 .search-icon-div {
-    display: flex;
-    position: relative;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    display: inherit;
+    position: inherit;
     width: 24px;
-    padding: 2px 2px 2px 2px;
+    float: left;
+    margin-left: 4px;
 }
 
 .search-input-input, .MuiInputBase-root {
-    margin-left: 4px;
+    display: inherit;
+    position: inherit;
     padding: 2px 2px 2px 2px;
-    width: calc(100% - 40px);
+    /*width: calc(100% - 40px);*/
     transition-duration: 1s;
     height: 100%;
+    width: 100%;
     pointer-events: auto;
     background-color: inherit;
+    margin-left: 4px;
 }
 
 
-.search-bar-div:focus {
+.search-bar-div:focus-within {
     width: 100%
 }

@@ -11,9 +11,11 @@ export interface itemType {
 
 const StyledList = withStyles({
     root: {
-        maxHeight: '100%',
         overflowY: 'scroll',
-        margin: '2px 2px 2px 2px',
+        marginTop: '10px',
+        paddingTop: '0px',
+        position: "relative",
+        maxHeight: "calc(100% - 40px)"
     }
 })(List)
 
