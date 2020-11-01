@@ -1,16 +1,12 @@
 import React, {ChangeEvent, Component} from "react";
 import {itemType, Table} from "./Table";
-import {v4} from "uuid";
 import {convertActionTypeToItemType} from "../../actions/utility";
 import {fetchFromStore} from "../../actions/store";
+import "../../root.css"
 import '../css/Popup.css';
 import {SearchBar} from "./SearchBar";
-
-const actionFunction = () => console.log("action");
-const createItem = (title: string, desc: string, isFocused = false, onAction = actionFunction) => {
-    return {id: v4(), title: title, description: desc, isFocused: isFocused, onAction: onAction};
-}
-const LOG_KEY = "Popup";
+import {Divider, ListItem, ListItemText} from "@material-ui/core";
+import {HashRouter, Link} from "react-router-dom";
 
 export class Popup extends Component<any, any> {
     private popupElem: HTMLDivElement | null | undefined;
@@ -59,9 +55,19 @@ export class Popup extends Component<any, any> {
     executeActionForEnterKey = (key: string) => {
         if (key === "Enter") {
             let indexToExecute = this.state.focusedIndex === -1 ? 0 : this.state.focusedIndex;
-            this.state.itemsList[indexToExecute]
-                ? this.state.itemsList[indexToExecute].onAction()
-                : console.warn(`Popup#executeActionForEnterKey: cannot find ${this.state.focusedIndex} in items list.`)
+
+            //no function to execute on the settings button
+            if(this.state.focusedIndex >= this.state.numOfItems) {
+                return true;
+            }
+
+            if (this.state.itemsList[indexToExecute]) {
+                this.setState({
+                    focusedIndex: indexToExecute
+                }, this.state.itemsList[indexToExecute].onAction())
+            } else {
+                console.warn(`Popup#executeActionForEnterKey: cannot find ${this.state.focusedIndex} in items list.`)
+            }
             return true;
         }
         return false;
@@ -70,7 +76,7 @@ export class Popup extends Component<any, any> {
     moveFocus_keyboard = (key: string) => {
         console.debug(`Popip#moveFocusKeyboard: Got ${key} when focus is ${this.state.focusedIndex}`)
         if (key === "ArrowDown") {
-            if (this.state.focusedIndex < this.state.numOfItems - 1) {
+            if (this.state.focusedIndex <= this.state.numOfItems - 1) {
                 this.setState((prevState: any) => {
                     return {focusedIndex: prevState.focusedIndex + 1};
                 })
@@ -119,10 +125,24 @@ export class Popup extends Component<any, any> {
 
     render() {
         return (
-            <div id={"popup-div"} ref={elem => this.popupElem = elem} style={{height: "200px"}}>
+            <div id={"popup-div"} ref={elem => this.popupElem = elem}>
                 <SearchBar onSearch={this.filterRows} isFocused={this.state.focusedIndex === -1}/>
                 <Table itemsList={this.state.itemsList} focusedIndex={this.state.focusedIndex}
                        onHover={this.moveFocus_mouse}/>
+                <Divider/>
+                <HashRouter>
+                    <Link to={"/settings-page"} target={"_blank"}  className={"unstyled-link"}>
+                        <ListItem button
+                                  className={"list-item-li"}
+                                  id={"list-item-settingspage"}
+                                  divider={true}
+                                  onMouseEnter={() => this.moveFocus_mouse(this.state.numOfItems)}
+                                  autoFocus={this.state.focusedIndex === this.state.numOfItems}
+                        >
+                            <ListItemText>Settings</ListItemText>
+                        </ListItem>
+                    </Link>
+                </HashRouter>
             </div>
         );
     }

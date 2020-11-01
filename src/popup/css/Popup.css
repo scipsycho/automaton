@@ -1,5 +1,11 @@
 #popup-div {
     width: 400px;
-    height: 300px;
-    margin: 2px 2px 2px 2px;
+    height: 500px;
+    min-height: 300px;
+    padding: 4px 4px 4px 4px;
+}
+
+.unstyled-link {
+    color: inherit;
+    text-decoration: inherit;
 }

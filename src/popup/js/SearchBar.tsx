@@ -8,7 +8,7 @@ export class SearchBar extends Component<any, any> {
 
     reFocus = (elem: any) => {
         const isFocused: boolean = this.props.isFocused;
-        if(isFocused && elem) {
+        if (isFocused && elem) {
             elem.focus()
             // elem.setSelectionRange(-1, -1)
             // elem.selectionStart = elem.selectionEnd = -1;
@@ -16,8 +16,9 @@ export class SearchBar extends Component<any, any> {
             console.warn("SearchBar#inputRef: cannot focus to searchbar")
         }
     }
+
     render() {
-        const {onSearch, isFocused} = this.props;
+        const {onSearch} = this.props;
         return (<div className={"search-bar-div"}>
             <div className={"search-icon-div"}>
                 <SearchIcon/>
