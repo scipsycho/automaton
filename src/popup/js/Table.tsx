@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Row} from "./Row";
-import {List, withStyles} from "@material-ui/core";
+import {List} from "@material-ui/core";
+import '../css/Table.css'
 
 export interface itemType {
     id: string,
@@ -9,27 +10,17 @@ export interface itemType {
     onAction: Function,
 }
 
-const StyledList = withStyles({
-    root: {
-        overflowY: 'scroll',
-        marginTop: '10px',
-        paddingTop: '0px',
-        position: "relative",
-        maxHeight: "calc(100% - 40px)"
-    }
-})(List)
-
 export class Table extends Component<any, any> {
     render() {
         const itemsList: itemType[] = this.props.itemsList
         const focusedIndex: number = this.props.focusedIndex
         const onHover: Function = this.props.onHover
         return (
-            <StyledList>
+            <List className={"table-div"}>
                 {itemsList.map((item, i) => (
                     <Row {...item} isFocused={focusedIndex === i} onHover={onHover} key={item.id} index={i}/>
                 ))}
-            </StyledList>
+            </List>
         )
     }
 }

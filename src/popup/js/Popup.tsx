@@ -1,9 +1,9 @@
 import React, {ChangeEvent, Component} from "react";
 import {itemType, Table} from "./Table";
 import {v4} from "uuid";
-import {convertActionTypeToItemType} from "../actions/utility";
-import {fetchFromStore} from "../actions/store";
-import './Popup.css';
+import {convertActionTypeToItemType} from "../../actions/utility";
+import {fetchFromStore} from "../../actions/store";
+import '../css/Popup.css';
 import {SearchBar} from "./SearchBar";
 
 const actionFunction = () => console.log("action");

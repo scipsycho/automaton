@@ -1,4 +1,4 @@
-import {Popup} from "../popup/Popup";
+import {Popup} from "../../popup/js/Popup";
 import React from "react";
 
 export default {

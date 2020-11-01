@@ -1,5 +1,5 @@
 import React from "react";
-import {SearchBar} from "../popup/SearchBar";
+import {SearchBar} from "../../popup/js/SearchBar";
 
 export default {
     title: 'SearchBar',

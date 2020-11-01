@@ -1,0 +1,6 @@
+.table-div {
+    overflow-y: scroll;
+    margin-top: 10px;
+    position: relative;
+    max-height: calc(100% - 50px)
+}

@@ -4,7 +4,7 @@ import {BrowserRouter, Switch, Route, HashRouter} from 'react-router-dom';
 import './index.css';
 import SettingsPage from './settings-page/SettingsPage';
 import reportWebVitals from './reportWebVitals';
-import {Popup} from "./popup/Popup";
+import {Popup} from "./popup/js/Popup";
 
 ReactDOM.render(
     <HashRouter>

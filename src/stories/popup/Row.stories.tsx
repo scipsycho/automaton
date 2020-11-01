@@ -1,4 +1,4 @@
-import {Row} from "../popup/Row";
+import {Row} from "../../popup/js/Row";
 import React from "react";
 
 export default {
@@ -7,7 +7,10 @@ export default {
 }
 
 const Template = (args: any) => <Row {...args}/>
-const onActionFunc = () => console.log("Action executed!");
+const logFunc = (msg: string) => console.log(msg)
+
+const onActionFunc = () => logFunc("Action Executed");
+const onHoverFunc = () => logFunc("On Hover func ")
 
 export const Default = Template.bind({})
 // @ts-ignore
@@ -15,7 +18,8 @@ Default.args = {
     title: "Title",
     description: "Description",
     onAction: onActionFunc,
-    isFocused: false
+    isFocused: false,
+    onHover: onHoverFunc
 }
 
 export const Focused = Template.bind({})
@@ -24,5 +28,6 @@ Focused.args = {
     title: "Title",
     description: "Description",
     onAction: onActionFunc,
-    isFocused: true
+    isFocused: true,
+    onHover: onHoverFunc
 }

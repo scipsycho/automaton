@@ -1,4 +1,4 @@
-import {itemType, Table} from "../popup/Table";
+import {itemType, Table} from "../../popup/js/Table";
 import React from "react";
 import {v4} from "uuid";
 
