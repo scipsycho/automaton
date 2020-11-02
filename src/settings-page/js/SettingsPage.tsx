@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import './SettingsPage.css';
-import {NavigationComponent} from "../common/NavigationComponent";
-import {ActionsComponent} from "../actions/ActionsComponent";
+import '../css/SettingsPage.css';
+import {Actions} from "./Actions";
+import {Navigation} from "./Navigation";
 
 export const drawerWidth = "17%";
 export const mainPageWidth = '50%';
@@ -16,9 +16,8 @@ function SettingsPage() {
         <div id={"root-page"} style={{
             width: '100wh', height: '100vh', color: 'white', backgroundColor: '#212121',
             display: 'flex',
-            justifyContent: 'center'
         }}>
-            <NavigationComponent
+            <Navigation
                 id={"navigation-bar"}
                 optionChangeHandler={setNavOption}
                 style={{color: 'white'}}
@@ -31,7 +30,7 @@ function SettingsPage() {
                 left: `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
                 top: mainPageTopPos
             }}>
-                {navOption === "Actions" && (<ActionsComponent/>)}
+                {navOption === "Actions" && (<Actions/>)}
             </div>
         </div>
     )

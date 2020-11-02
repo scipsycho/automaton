@@ -37,22 +37,32 @@ const actionsStore = createStore({
                 }
             })
         },
+
         modifyAction: (unique_id: string, props: any) => ({setState, getState}) => {
             console.debug(`actionsStore#deleteAction called with ${unique_id}`)
             let currentListOfActions = getState().listOfActions
-            let actionFunc;
+            let actionFunc: Function;
+            let regexObj: RegExp;
             try {
                 actionFunc = eval(props.details)
             } catch (e) {
                 console.error(`Not able to convert ${props.details} to a valid function`)
                 return;
             }
+            try {
+                regexObj = new RegExp(props.regex);
+            } catch (e) {
+                console.error(`Not able to convert ${props.details} to a valid regular expression`)
+                return;
+            }
+
             currentListOfActions[unique_id] ?
                 currentListOfActions[unique_id] = {
                     name: props.heading,
                     description: "not yet filled TODO",
                     action: actionFunc,
-                    is_system: false
+                    is_system: false,
+                    regex: regexObj
                 } :
                 console.warn(`actionsStore#modifyAction: No item found with id: ${unique_id}. Adding a new item`);
             setState({
@@ -61,13 +71,23 @@ const actionsStore = createStore({
                 }
             })
         },
-        validateAction: (actionString: string) => ({}) => {
+
+        validate: (actionString: string, regexString: string) => ({}) => {
+            let errorAction: boolean = false;
+            let errorRegex: boolean = false;
             try {
                 eval(actionString)
             } catch (e) {
-                return false;
+                errorAction = true;
             }
-            return true;
+
+            try {
+                new RegExp(regexString)
+            } catch (e) {
+                errorRegex = true;
+            }
+            console.debug(`actionsStore#validate function called with ${actionString} and ${regexString}. Returning ${errorAction} and ${errorRegex}`)
+            return {errorAction, errorRegex};
         }
     },
     name: "Actions Store"

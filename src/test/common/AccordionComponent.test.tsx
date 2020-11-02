@@ -1,13 +1,13 @@
 import React from 'react';
 import {cleanup, render, screen} from '@testing-library/react';
-import {AccordionComponent} from "../../common/AccordionComponent";
+import {Expand} from "../../common/js/Expand";
 
 
 describe('AccordianComponent', () => {
     let deleteFunc = jest.fn()
     let submitFunc = jest.fn()
     beforeEach(() => {
-        render(<AccordionComponent
+        render(<Expand
             id={"random-id"}
             heading={"heading"}
             isDisabled={false}

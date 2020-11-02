@@ -1,42 +1,36 @@
 import React, {Component, FormEvent} from "react";
 import Accordion from "@material-ui/core/Accordion";
-import {AccordionActions, AccordionSummary, Button, Divider, IconButton, Tooltip, Typography} from "@material-ui/core";
+import {AccordionActions, AccordionSummary, Divider, Tooltip, Typography} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
-import {
-    accordionHeadingStyle,
-    accordionStyle,
-    CssSaveButton,
-    CssDetailsTextField,
-    CssSummaryTextField,
-    CssDeleteButton
-} from "./style";
+import '../../root.css';
+import '../css/Expand.css';
+import {CssDeleteButton, CssDetailsTextField, CssSaveButton, CssSummaryTextField} from "../style";
 
 
-export class AccordionComponent extends Component<any, any> {
+export class Expand extends Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
             heading: this.props.heading,
             details: this.props.details,
+            regex: this.props.regex,
             saveButtonVisible: false,
-            errorDetails: false
+            errorDetails: false,
+            errorRegex: false,
         }
     }
 
     onSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (this.props.validateDetails(this.state.details)) {
-            this.setState({
-                errorDetails: false
-            })
+        let validateOutput = this.props.validateInputHandler(this.state.details, this.state.regex)
+        this.setState({
+            ...validateOutput
+        });
+        if(validateOutput.errorDetails && validateOutput.errorRegex) {
             this.props.modifyHandler(this.props.id, this.state);
-        } else {
-            this.setState({
-                errorDetails: true
-            })
         }
     }
 
@@ -48,14 +42,27 @@ export class AccordionComponent extends Component<any, any> {
         })
     }
 
+    onInputRegexHandler = (e: FormEvent<HTMLDivElement>) => {
+        let val = (e.target as HTMLInputElement).value
+        this.setState({
+            regex: val,
+            errorRegex: false,
+        })
+    }
+
     render() {
-        const {heading, isDisabled, details, deleteHandler, id, isExpanded, expandHandler} = this.props;
+        const {heading, isDisabled, deleteHandler, id, isExpanded, expandHandler} = this.props;
         return (
             <form onSubmit={e => this.onSubmitHandler(e)}>
-                <Accordion id={id} defaultExpanded={false} square={true} style={accordionStyle} expanded={isExpanded}
-                           onChange={(_, expanded) => expandHandler(id, expanded)}>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                        <Typography style={accordionHeadingStyle}>{heading}</Typography>
+                <Accordion id={id}
+                           defaultExpanded={false}
+                           square={true}
+                           expanded={isExpanded}
+                           onChange={(_, expanded) => expandHandler(id, expanded)}
+                           className={"expand-div"}
+                >
+                    <AccordionSummary expandIcon={<ExpandMoreIcon/>} className={"expand-summary-div"}>
+                        <Typography>{heading}</Typography>
                     </AccordionSummary>
                     {isDisabled || (<AccordionDetails>
                         <CssSummaryTextField
@@ -70,10 +77,21 @@ export class AccordionComponent extends Component<any, any> {
                     </AccordionDetails>)}
                     <AccordionDetails>
                         <CssDetailsTextField
-                            id={`${id}_details`}
-                            label={"javascript"}
+                            id={`${id}_regex`}
+                            label={"URL regex"}
                             variant={"outlined"}
-                            defaultValue={details.toString()}
+                            defaultValue={this.state.regex.toString()}
+                            disabled={isDisabled}
+                            error={this.state.errorRegex}
+                            onInput={e => this.onInputRegexHandler(e)}
+                        />
+                    </AccordionDetails>
+                    <AccordionDetails>
+                        <CssDetailsTextField
+                            id={`${id}_details`}
+                            label={"Action to perform in javascript"}
+                            variant={"outlined"}
+                            defaultValue={this.state.details.toString()}
                             disabled={isDisabled}
                             multiline={true}
                             fullWidth={true}

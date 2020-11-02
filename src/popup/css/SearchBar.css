@@ -5,7 +5,7 @@
     background-color: var(--light-color);
     border-radius: var(--border-raidus-small-fields);
     border-style: solid;
-    border-color: var(--darkest-color);
+    border-color: var(--dark-color-1);
     border-width: 1px;
     position: relative;
     justify-content: left;

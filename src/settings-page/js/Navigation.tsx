@@ -1,36 +1,32 @@
 import React, {Component} from "react";
 import {AppBar, Divider, List, ListItem, ListItemText, Typography} from "@material-ui/core";
 import Toolbar from '@material-ui/core/Toolbar';
-import {drawerWidth} from "../settings-page/SettingsPage";
+import '../../root.css';
+import '../css/Navigation.css';
 
-export class NavigationComponent extends Component<any, any> {
+export class Navigation extends Component<any, any> {
     render() {
         const {optionChangeHandler} = this.props;
         return (
             <AppBar position={"fixed"}
-                style={{
-                    left: 0,
-                    width: drawerWidth,
-                    height: '100%',
-                    backgroundColor: '#3c3c3c'
-                }}
+                    className={"navigation-header"}
             >
                 <Toolbar>
                     <Typography variant={'h6'}>
                         Automaton
                     </Typography>
                 </Toolbar>
-                <Divider />
+                <Divider/>
                 <List>
-                    {['Rules'].map((text, index) => (
+                    {['Actions'].map((text, index) => (
                         <ListItem button key={text} onClick={() => optionChangeHandler(text)}>
-                            <ListItemText primary={text} style={{zIndex:5}}/>
+                            <ListItemText primary={text} style={{zIndex: 5}}/>
                         </ListItem>
                     ))}
                     <Divider/>
-                    {['Actions', 'Icons', 'Triggers'].map((text, index) => (
+                    {['Variables', 'Performance', 'About'].map((text, index) => (
                         <ListItem button key={text} onClick={() => optionChangeHandler(text)}>
-                            <ListItemText primary={text} />
+                            <ListItemText primary={text}/>
                         </ListItem>
                     ))}
                 </List>

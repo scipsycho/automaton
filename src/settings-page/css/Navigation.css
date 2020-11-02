@@ -1,0 +1,9 @@
+.navigation-header.MuiAppBar-root{
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 17%;
+    background-color: var(--light-color);
+    color: var(--text-color-on-light);
+    min-width: 200px;
+}

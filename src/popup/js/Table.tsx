@@ -8,6 +8,7 @@ export interface itemType {
     title: string,
     description: string,
     onAction: Function,
+    regex: RegExp
 }
 
 export class Table extends Component<any, any> {

@@ -1,0 +1,10 @@
+.expand-div.MuiPaper-root {
+    padding: 1px;
+    background-color: var(--light-color);
+    color: var(--text-color-on-light);
+}
+
+.expand-summary-div.MuiButtonBase-root {
+    color: inherit;
+    font-weight: bold;
+}

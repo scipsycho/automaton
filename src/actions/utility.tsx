@@ -9,6 +9,7 @@ export const convertActionTypeToItemType = (actionsDict: {[key: string]: actionT
             title: actionsDict[id].name,
             description: actionsDict[id].description,
             onAction: actionsDict[id].action,
+            regex: actionsDict[id].regex,
         });
     }
     return itemsList;

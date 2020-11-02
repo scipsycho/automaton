@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import {ListComponent} from "../common/ListComponent";
-import {ActionsStoreSubscriber} from "./store";
+import {ListComponent} from "../../common/ListComponent";
+import {ActionsStoreSubscriber} from "../../actions/store";
 import {IconButton, Typography} from "@material-ui/core";
-import {heightBetweenHeadingAndList, mainPageTopPos, mainPageWidth} from "../settings-page/SettingsPage";
+import {heightBetweenHeadingAndList, mainPageTopPos, mainPageWidth} from "./SettingsPage";
 import AddIcon from '@material-ui/icons/Add';
-import {CssCreateButton} from "../common/style";
-import {SAMPLE_ACTION} from "./actions";
+import {CssCreateButton} from "../../common/style";
+import {SAMPLE_ACTION} from "../../actions/actions";
 
-export class ActionsComponent extends Component<any, any> {
+export class Actions extends Component<any, any> {
     render() {
         return (
             <ActionsStoreSubscriber>
@@ -31,9 +31,10 @@ export class ActionsComponent extends Component<any, any> {
                                 headingField={"name"}
                                 disabledField={"is_system"}
                                 detailsField={"action"}
+                                regexField={"regex"}
                                 deleteHandler={actions.deleteAction}
                                 modifyHandler={actions.modifyAction}
-                                validateDetails={actions.validateAction}
+                                validateInputHandler={actions.validate}
                             />
                         </div>
                     </div>
