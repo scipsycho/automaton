@@ -9,6 +9,8 @@ export default {
 const Template = (args: any) => <Expand {...args}/>;
 
 const noop = () => {}
+const validateInputHandler_noerror = () => {return {errorDetails: false, errorRegex: false}}
+const validateInputHandler_error = () => {return {errorDetails: true, errorRegex: true}}
 export const Default = Template.bind({})
 // @ts-ignore
 Default.args = {
@@ -20,7 +22,7 @@ Default.args = {
    isExpanded: false,
    deleteHandler: noop,
    modifyHandler: noop,
-   validateDetails: noop,
+   validateInputHandler: validateInputHandler_noerror,
    expandHandler: noop
 };
 
@@ -35,7 +37,22 @@ Expanded.args = {
    isExpanded: true,
    deleteHandler: noop,
    modifyHandler: noop,
-   validateDetails: noop,
+   validateInputHandler: validateInputHandler_noerror,
+   expandHandler: noop
+}
+
+export const ExpandedError = Template.bind({})
+// @ts-ignore
+ExpandedError.args = {
+   id: "random-id",
+   heading: "Heading is this",
+   isDisabled: false,
+   details: "details",
+   regex: "*",
+   isExpanded: true,
+   deleteHandler: noop,
+   modifyHandler: noop,
+   validateInputHandler: validateInputHandler_error,
    expandHandler: noop
 }
 
@@ -50,7 +67,7 @@ Disabled.args = {
    isExpanded: false,
    deleteHandler: noop,
    modifyHandler: noop,
-   validateDetails: noop,
+   validateInputHandler: validateInputHandler_noerror,
    expandHandler: noop
 }
 
@@ -65,6 +82,6 @@ DisabledExpanded.args = {
    isExpanded: true,
    deleteHandler: noop,
    modifyHandler: noop,
-   validateDetails: noop,
+   validateInputHandler: validateInputHandler_noerror,
    expandHandler: noop
 }

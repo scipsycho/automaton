@@ -23,7 +23,7 @@
     margin-left: 4px;
 }
 
-.search-input-input, .MuiInputBase-root {
+.search-input-input.MuiInputBase-root {
     display: inherit;
     position: inherit;
     padding: 2px 2px 2px 2px;

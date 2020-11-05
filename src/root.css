@@ -1,8 +1,16 @@
 :root {
+    /*right now this text color setting doesn't work for popup at all*/
+    --text-color-on-light: black;
+    --dark-color-4: #151515;
+    --dark-color-3: #616161;
     --dark-color-2: #afafaf;
     --dark-color-1: #d6d6d6;
     --light-color: #f2f2f2;
     --border-raidus-small-fields: 6px;
-    /*right now this text color setting doesn't work for popup at all*/
-    --text-color-on-light: black;
+
+
+    /**defaults**/
+    color: var(--text-color-on-light);
+    background-color: var(--light-color);
+    border-color: var(--dark-color-1);
 }

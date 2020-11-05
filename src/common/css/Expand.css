@@ -1,4 +1,4 @@
-.expand-div.MuiPaper-root {
+.expand-div.MuiPaper-root{
     padding: 1px;
     background-color: var(--light-color);
     color: var(--text-color-on-light);
@@ -7,4 +7,76 @@
 .expand-summary-div.MuiButtonBase-root {
     color: inherit;
     font-weight: bold;
+}
+
+/*three states
+one normal
+two hover
+three focused
+fourth focused hover
+*/
+
+.expand-summary-input-div .MuiInputBase-root {
+    color: inherit;
+    background-color: inherit;
+}
+
+.expand-summary-input-div .MuiInput-underline::before {
+    border-bottom-color: var(--dark-color-2);
+}
+
+.expand-summary-input-div .MuiInput-underline::after {
+    border-bottom-color: var(--dark-color-4);
+}
+
+/*expand-regex-input-div*/
+
+.expand-regex-input-div .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-2);
+}
+.expand-regex-input-div .MuiInputLabel-outlined {
+    color: var(--dark-color-2);
+}
+/**hover**/
+.expand-regex-input-div:hover .MuiInputLabel-outlined{
+    color: var(--dark-color-3)
+}
+
+.expand-regex-input-div .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-3);
+}
+
+/*focused*/
+.expand-regex-input-div .MuiInputLabel-outlined.Mui-focused {
+    color: var(--dark-color-4);
+}
+
+.expand-regex-input-div .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-4)
+}
+
+/*expand-action-input-div*/
+
+.expand-action-input-div .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-2);
+}
+.expand-action-input-div .MuiInputLabel-outlined {
+    color: var(--dark-color-2);
+}
+/**hover**/
+.expand-action-input-div:hover .MuiInputLabel-outlined{
+    color: var(--dark-color-3)
+}
+
+.expand-action-input-div .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-3);
+}
+
+/*focused*/
+.expand-action-input-div .MuiInputLabel-outlined.Mui-focused {
+    color: var(--dark-color-4);
+}
+
+.expand-action-input-div .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: var(--dark-color-4)
 }

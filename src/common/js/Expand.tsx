@@ -1,13 +1,12 @@
 import React, {Component, FormEvent} from "react";
 import Accordion from "@material-ui/core/Accordion";
-import {AccordionActions, AccordionSummary, Divider, Tooltip, Typography} from "@material-ui/core";
+import {AccordionActions, AccordionSummary, Button, Divider, TextField, Tooltip, Typography} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import '../../root.css';
 import '../css/Expand.css';
-import {CssDeleteButton, CssDetailsTextField, CssSaveButton, CssSummaryTextField} from "../style";
 
 
 export class Expand extends Component<any, any> {
@@ -65,18 +64,19 @@ export class Expand extends Component<any, any> {
                         <Typography>{heading}</Typography>
                     </AccordionSummary>
                     {isDisabled || (<AccordionDetails>
-                        <CssSummaryTextField
+                        <TextField
                             id={`${id}_summary`}
                             variant={"standard"}
                             defaultValue={heading.toString()}
                             disabled={isDisabled}
                             multiline={false}
                             onInput={e => this.setState({heading: (e.target as HTMLInputElement).value})}
-                            className={"hello"}
+                            className={"expand-summary-input-div"}
+                            inputProps={{disabledUnderline: false}}
                         />
                     </AccordionDetails>)}
                     <AccordionDetails>
-                        <CssDetailsTextField
+                        <TextField
                             id={`${id}_regex`}
                             label={"URL regex"}
                             variant={"outlined"}
@@ -84,10 +84,11 @@ export class Expand extends Component<any, any> {
                             disabled={isDisabled}
                             error={this.state.errorRegex}
                             onInput={e => this.onInputRegexHandler(e)}
+                            className={"expand-regex-input-div"}
                         />
                     </AccordionDetails>
                     <AccordionDetails>
-                        <CssDetailsTextField
+                        <TextField
                             id={`${id}_details`}
                             label={"Action to perform in javascript"}
                             variant={"outlined"}
@@ -97,21 +98,22 @@ export class Expand extends Component<any, any> {
                             fullWidth={true}
                             error={this.state.errorDetails}
                             onInput={e => this.onInputDetailsHandler(e)}
+                            className={"expand-action-input-div"}
                         />
                     </AccordionDetails>
                     <Divider/>
                     {isDisabled || (<AccordionActions>
                         <Tooltip title={"Delete"}>
-                            <CssDeleteButton onClick={() => deleteHandler(id)} size={"small"} id={`${id}_delete`}>
+                            <Button onClick={() => deleteHandler(id)} size={"small"} id={`${id}_delete`}>
                                 <DeleteIcon/>
                                 Delete
-                            </CssDeleteButton>
+                            </Button>
                         </Tooltip>
                         <Tooltip title={"Save"}>
-                            <CssSaveButton size={"small"} type={"submit"} id={`${id}_submit`}>
+                            <Button size={"small"} type={"submit"} id={`${id}_submit`}>
                                 <SaveIcon/>
                                 Save
-                            </CssSaveButton>
+                            </Button>
                         </Tooltip>
                     </AccordionActions>)}
                 </Accordion>
