@@ -13,23 +13,22 @@ function SettingsPage() {
     let [navOption, setNavOption] = useState('Actions')
 
     return (
-        <div id={"root-page"} style={{
-            width: '100wh', height: '100vh', color: 'white', backgroundColor: '#212121',
-            display: 'flex',
-        }}>
+        <div id={"root-page"}>
             <Navigation
                 id={"navigation-bar"}
                 optionChangeHandler={setNavOption}
                 style={{color: 'white'}}
             />
-            <div id={"navopt-mid-box"} style={{
-                backgroundColor: '#212121',
-                width: mainPageWidth,
-                maxHeight: '100%',
-                position: 'fixed',
-                left: `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
-                top: mainPageTopPos
-            }}>
+            <div id={"navopt-mid-box"}
+                //      style={{
+                //     backgroundColor: '#212121',
+                //     width: mainPageWidth,
+                //     maxHeight: '100%',
+                //     position: 'fixed',
+                //     left: `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
+                //     top: mainPageTopPos
+                // }}
+            >
                 {navOption === "Actions" && (<Actions/>)}
             </div>
         </div>

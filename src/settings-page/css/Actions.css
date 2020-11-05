@@ -1,0 +1,26 @@
+#actions-page {
+    width: 90%;
+    height: 80%;
+    position: relative;
+    justify-content: left;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+    flex-direction: column;
+}
+#action-heading {
+    background-color: pink;
+}
+
+#action-create-button {
+    background-color: green;
+    height: 30px;
+    width: 90px;
+}
+
+#actions-list {
+    overflow-y: scroll;
+    min-height: 20%;
+    max-height: 70%;
+    background-color: blue;
+}

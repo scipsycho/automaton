@@ -52,7 +52,7 @@ export class Expand extends Component<any, any> {
     render() {
         const {heading, isDisabled, deleteHandler, id, isExpanded, expandHandler} = this.props;
         return (
-            <form onSubmit={e => this.onSubmitHandler(e)}>
+            <form onSubmit={e => this.onSubmitHandler(e)} className={"expand-form"}>
                 <Accordion id={id}
                            defaultExpanded={false}
                            square={true}

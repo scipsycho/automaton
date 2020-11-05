@@ -4,6 +4,19 @@
     color: var(--text-color-on-light);
 }
 
+.expand-div.MuiAccordion-root.Mui-expanded, .expand-div.MuiAccordion-root.Mui-expanded:first-child, .expand-div.MuiAccordion-root.Mui-expanded:last-child {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.expand-form:last-child .expand-div.MuiAccordion-root.Mui-expanded{
+    margin-bottom: 0;
+}
+
+.expand-form:first-child .expand-div.MuiAccordion-root.Mui-expanded{
+    margin-top: 0;
+}
+
 .expand-summary-div.MuiButtonBase-root {
     color: inherit;
     font-weight: bold;

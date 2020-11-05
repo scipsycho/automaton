@@ -6,4 +6,7 @@
     background-color: var(--light-color);
     color: var(--text-color-on-light);
     min-width: 200px;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: var(--dark-color-2);
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Expand} from "./js/Expand";
+import {Expand} from "./Expand";
 
 export class ListComponent extends Component<any, any> {
     constructor(props: any) {
