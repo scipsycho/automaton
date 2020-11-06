@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import '../css/SettingsPage.css';
 import {Actions} from "./Actions";
 import {Navigation} from "./Navigation";
-
-export const drawerWidth = "17%";
-export const mainPageWidth = '50%';
-export const mainPageTopPos = '10%';
-export const widthBetweenDrawerAndMainPage = '15%';
-export const heightBetweenHeadingAndList = '10%';
+import {Extras} from "./Extras";
 
 function SettingsPage() {
     let [navOption, setNavOption] = useState('Actions')
-
+    let extraInfo = {
+        heading: "Heading is this",
+        description: "Did you know that Wikipedia volunteers have already taken steps to protect the \"2020 United States presidential election\" article? Only users who have had a registered account for over 30 days and have made 500 previous edits can change the page.",
+        link: "/"
+    }
     return (
         <div id={"root-page"}>
             <Navigation
@@ -19,18 +18,13 @@ function SettingsPage() {
                 optionChangeHandler={setNavOption}
                 style={{color: 'white'}}
             />
-            <div id={"navopt-mid-box"}
-                //      style={{
-                //     backgroundColor: '#212121',
-                //     width: mainPageWidth,
-                //     maxHeight: '100%',
-                //     position: 'fixed',
-                //     left: `calc(${widthBetweenDrawerAndMainPage} + ${drawerWidth})`,
-                //     top: mainPageTopPos
-                // }}
-            >
+            <div id={"extras-right-box"}>
+                <Extras {...extraInfo}/>
+            </div>
+            <div id={"navopt-mid-box"}>
                 {navOption === "Actions" && (<Actions/>)}
             </div>
+
         </div>
     )
 }

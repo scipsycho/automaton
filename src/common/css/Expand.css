@@ -5,8 +5,8 @@
 }
 
 .expand-div.MuiAccordion-root.Mui-expanded, .expand-div.MuiAccordion-root.Mui-expanded:first-child, .expand-div.MuiAccordion-root.Mui-expanded:last-child {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .expand-form:last-child .expand-div.MuiAccordion-root.Mui-expanded{
@@ -39,7 +39,7 @@ fourth focused hover
 }
 
 .expand-summary-input-div .MuiInput-underline::after {
-    border-bottom-color: var(--dark-color-4);
+    border-bottom-color: var(--dark-color-5);
 }
 
 /*expand-regex-input-div*/
@@ -61,11 +61,11 @@ fourth focused hover
 
 /*focused*/
 .expand-regex-input-div .MuiInputLabel-outlined.Mui-focused {
-    color: var(--dark-color-4);
+    color: var(--dark-color-5);
 }
 
 .expand-regex-input-div .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: var(--dark-color-4)
+    border-color: var(--dark-color-5)
 }
 
 /*expand-action-input-div*/
@@ -87,9 +87,9 @@ fourth focused hover
 
 /*focused*/
 .expand-action-input-div .MuiInputLabel-outlined.Mui-focused {
-    color: var(--dark-color-4);
+    color: var(--dark-color-5);
 }
 
 .expand-action-input-div .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-    border-color: var(--dark-color-4)
+    border-color: var(--dark-color-5)
 }

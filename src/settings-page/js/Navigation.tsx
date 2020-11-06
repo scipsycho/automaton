@@ -9,7 +9,7 @@ export class Navigation extends Component<any, any> {
         const {optionChangeHandler} = this.props;
         return (
             <AppBar position={"fixed"}
-                    className={"navigation-header"}
+                    className={"navigation-header border-right-dark"}
             >
                 <Toolbar>
                     <Typography variant={'h6'}>

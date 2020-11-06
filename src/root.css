@@ -1,11 +1,12 @@
 :root {
     /*right now this text color setting doesn't work for popup at all*/
     --text-color-on-light: black;
-    --dark-color-4: #151515;
+    --dark-color-5: #151515;
+    --dark-color-4: #494949;
     --dark-color-3: #616161;
     --dark-color-2: #afafaf;
     --dark-color-1: #d6d6d6;
-    --light-color: #f2f2f2;
+    --light-color: white;
     --border-raidus-small-fields: 6px;
 
 
@@ -14,3 +15,9 @@
     background-color: var(--light-color);
     border-color: var(--dark-color-1);
 }
+
+.unstyled-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+

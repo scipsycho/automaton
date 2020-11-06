@@ -1,0 +1,45 @@
+.extra-box-div {
+    height: 300px;
+    width: 90%;
+    background-color: var(--light-color);
+    position: relative;
+    left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--dark-color-3);
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.extra-heading-div {
+    background-color: var(--dark-color-1);
+
+    color: var(--text-color-on-light);
+    font-size: large;
+    font-weight: normal;
+
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--dark-color-2);
+
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    margin: 0;
+}
+
+.extra-description-div {
+    padding: 10px 10px 10px 10px;
+    text-align: justify;
+    text-justify: inter-word;
+    text-overflow: ellipsis;
+    min-width: 200px;
+    overflow: hidden;
+    /*height: 200px;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}

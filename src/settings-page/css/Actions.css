@@ -1,26 +1,19 @@
 #actions-page {
-    width: 90%;
-    height: 80%;
-    position: relative;
-    justify-content: left;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: yellow;
-    flex-direction: column;
+
 }
 #action-heading {
-    background-color: pink;
+
 }
 
 #action-create-button {
-    background-color: green;
-    height: 30px;
-    width: 90px;
+    height: 40px;
+    width: 100px;
 }
 
 #actions-list {
+    display: block;
     overflow-y: scroll;
     min-height: 20%;
     max-height: 70%;
-    background-color: blue;
+    background-color: inherit;
 }
